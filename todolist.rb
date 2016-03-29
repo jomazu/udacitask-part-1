@@ -109,7 +109,7 @@ class Item
 
   # Returns boolean using ternary operator
   def completed?
-    return @completed_status ? "Yes" : "No"
+    return @completed_status ? true : false
   end
   
    # Toggle completion
