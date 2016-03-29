@@ -1,54 +1,64 @@
 class TodoList
+  # GETTERS for title and items
+  attr_reader :title, :items
     
-  attr_accessor :title, :items
-    
-  def initialize(list_title)
-    @title = list_title
+  # Constructor method
+  def initialize(title)
+    @title = title
     @items = []
   end
   
-  # Change name of title
-  def new_title_name(new_title_name)
-    @title = new_title_name
+  # To String method
+  def to_s
+    return "TodoList title: #{@title}"
+    return "TodoList items: #{@items}"
   end
   
-  # Add new item to list
-  def add_item(new_item)
-    item = Item.new(new_item)
-    @items.push(item) # Alternative: @items << item
+  # Rename list
+  def new_title(new_title)
+    @title = new_title
+  end
+  
+  # Add new item and rank to list
+  def add_item(item, rank="High")
+    new_item = Item.new(item, rank)
+    @items << new_item
   end
   
   # Remove item from list
-  def remove_item(item_index)
-    @items.delete_at(item_index)
+  def remove_item(index)
+    @items.delete_at(index)
   end
   
-  def count_list_items
+  # Change completion
+  def change_completion(index)
+    @items.at(index).toggle_completion
+  end
+  
+  # Count items
+  def count_items
     @items.length
   end
   
   # Print today's date
   def current_date
-    puts "  Created on " + Time.now.strftime("%m/%d/%Y at %I:%M%p").to_s
+    current_date = "  Created on " + Time.now.strftime("%m/%d/%Y at %I:%M%p").to_s
+    puts current_date.center(42)
   end
   
   # Print readability divider
-  def report_heavy_divider
-    puts ("  " + ("=" * 41))
-  end
-  
-  # Print light readability divider
-  def report_light_divider
-    puts ("  " + ("-" * 41))
+  def divider
+    puts ("  " + ("=" * 42))
   end
   
   # Print created by
-  def created_by
-    puts "  Created by: John Zukowski"
+  def author
+    author = "  Created by: John Zukowski"
+    puts author.center(42)
   end
   
   # Print "To do List" in ascii art
-  def todolist_ascii
+  def ascii_art
     puts "
    _______          _         _      _     _   
   |__   __|        | |       | |    (_)   | |  
@@ -56,41 +66,68 @@ class TodoList
      | |/ _ \   / _` |/ _ \  | |    | / __| __|
      | | (_) | | (_| | (_) | | |____| \__ \ |_ 
      |_|\___/   \__,_|\___/  |______|_|___/\__|
-   
     "                                            
   end
   
   # List header
-  def print_list_header
-    report_heavy_divider
+  def print_header
+    divider
     current_date
-    created_by
-    report_heavy_divider
-    todolist_ascii
+    author
+    divider
+    ascii_art
+  end
+  
+  # List title
+  def print_title
+    divider
+    puts "#{@title.center(42)}"
+    puts "Total items listed (#{count_items})".center(42)
+    divider
+    puts ""
   end
   
   # Print list
   def print_list
-    report_light_divider
-    puts "  Total items listed: #{count_list_items}"
-    report_light_divider
+    print_title
+    list_items
+  end
+  
+  # List items
+  def list_items
+    @items.each do |item|
+      item.print_item
+    end
   end
 end
 
 
 class Item
     
-  attr_accessor :description, :completed_status
+  attr_reader :description, :completed_status, :rank
 
-  # Initialize item with a description and marked as not complete
-  def initialize(item_description)
-    @description = item_description
+  # Initialize item
+  def initialize(description, rank)
+    @description = description
     @completed_status = false
+    @rank = rank
   end
   
-  # Item marked as complete
-  def completed(item)
-    item.completed_status = true
+   # Toggle completion
+  def toggle_completion
+    @completed_status = !@completed_status
   end
-
+  
+  def print_item
+    puts "  Item: #{@description}"
+    puts "  Rank: #{@rank}"
+    puts "  Completed: #{@completed_status}"
+    puts ""
+  end
+  
+  def index_num
+    result = []
+    @description.each_with_index {|item, index| result << [item, index]}
+    result
+  end
 end

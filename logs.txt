@@ -1,3 +1,9 @@
+commit 468bb1c443051cefc514b8e2a2fb6c3de522b065
+Author: John Zukowski <johnzukowski@outlook.com>
+Date:   Thu Mar 24 12:07:35 2016 -0400
+
+    Modifications to todolist.rb and udacitask.rb. Added logs.txt and new_features.txt
+
 commit e9816b909fffe3beb196924b2a15df2d3a2ccec2
 Author: John Zukowski <johnzukowski@outlook.com>
 Date:   Tue Mar 22 23:08:13 2016 -0400
