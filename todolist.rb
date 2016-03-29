@@ -107,9 +107,9 @@ class Item
     @rank = rank
   end
 
-  # Returns boolean using ternary operator
+  # Check if item is completed
   def completed?
-    return @completed_status ? true : false
+    @completed_status
   end
   
    # Toggle completion
