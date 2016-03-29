@@ -1,5 +1,5 @@
 # new_features.txt
 
 Feature #1: <Add Rank feature: High importance or Low importance>
-Feature #2: <Toggle Rank>
-Feature #3: <Feature Description>
+Feature #2: <Print list weekday>
+Feature #3: <Print list author>

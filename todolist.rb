@@ -4,23 +4,17 @@ class TodoList
     
   # Constructor method
   def initialize(title)
-    @title = title
+    @title = title.upcase
     @items = []
-  end
-  
-  # To String method
-  def to_s
-    return "TodoList title: #{@title}"
-    return "TodoList items: #{@items}"
   end
   
   # Rename list
   def new_title(new_title)
-    @title = new_title
+    @title = new_title.upcase
   end
   
   # Add new item and rank to list
-  def add_item(item, rank="High")
+  def add_item(item, rank="High importance!")
     new_item = Item.new(item, rank)
     @items << new_item
   end
@@ -41,9 +35,9 @@ class TodoList
   end
   
   # Print today's date
-  def current_date
-    current_date = "  Created on " + Time.now.strftime("%m/%d/%Y at %I:%M%p").to_s
-    puts current_date.center(42)
+  def weekday
+    current_time = Time.new
+    current_time.strftime("%A, %m/%d/%Y")
   end
   
   # Print readability divider
@@ -53,8 +47,9 @@ class TodoList
   
   # Print created by
   def author
-    author = "  Created by: John Zukowski"
-    puts author.center(42)
+    first_name = "john"
+    last_name = "zukowski"
+    author = "  Author: #{first_name.capitalize} #{last_name.capitalize}"
   end
   
   # Print "To do List" in ascii art
@@ -72,17 +67,16 @@ class TodoList
   # List header
   def print_header
     divider
-    current_date
-    author
-    divider
     ascii_art
   end
   
   # List title
   def print_title
     divider
-    puts "#{@title.center(42)}"
-    puts "Total items listed (#{count_items})".center(42)
+    puts "#{@title}".center(42)
+    puts "#{weekday}".center(42)
+    puts "#{author}".center(42)
+    puts "Total items shown (#{count_items})".center(42)
     divider
     puts ""
   end
@@ -112,6 +106,11 @@ class Item
     @completed_status = false
     @rank = rank
   end
+
+  # Returns boolean using ternary operator
+  def completed?
+    return @completed_status ? "Yes" : "No"
+  end
   
    # Toggle completion
   def toggle_completion
@@ -119,15 +118,9 @@ class Item
   end
   
   def print_item
-    puts "  Item: #{@description}"
-    puts "  Rank: #{@rank}"
-    puts "  Completed: #{@completed_status}"
+    puts "  Description:  #{@description}"
+    puts "  Rank:         #{@rank}"
+    puts "  Completed:    #{@completed_status}"
     puts ""
-  end
-  
-  def index_num
-    result = []
-    @description.each_with_index {|item, index| result << [item, index]}
-    result
   end
 end
