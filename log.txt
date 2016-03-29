@@ -1,3 +1,9 @@
+commit 154b34f910b34518c8abef265dc7992516eac1a0
+Author: John Zukowski <johnzukowski@outlook.com>
+Date:   Mon Mar 28 22:29:39 2016 -0400
+
+    modified code and added rank feature
+
 commit 468bb1c443051cefc514b8e2a2fb6c3de522b065
 Author: John Zukowski <johnzukowski@outlook.com>
 Date:   Thu Mar 24 12:07:35 2016 -0400
