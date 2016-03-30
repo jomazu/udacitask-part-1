@@ -1,3 +1,27 @@
+commit f8461a7a00128e5a0e486ca7ec537e0af73f08b8
+Author: John Zukowski <johnzukowski@outlook.com>
+Date:   Tue Mar 29 23:29:34 2016 -0400
+
+    update list input value to adjust to index dynamically, changed author to instance variable, and corrected boolean method for completion status
+
+commit 97c19a492261965d488a18c51d48d9d620d0040c
+Author: John Zukowski <johnzukowski@outlook.com>
+Date:   Tue Mar 29 19:00:58 2016 -0400
+
+    fix boolean method
+
+commit f39c105d71857c082b2b416b75b6667d2e126c05
+Author: John Zukowski <johnzukowski@outlook.com>
+Date:   Tue Mar 29 18:15:05 2016 -0400
+
+    changed '?' method from string to boolean
+
+commit c9d896e4dd9cf4bb3043f727eab618046f6b5996
+Author: John Zukowski <johnzukowski@outlook.com>
+Date:   Tue Mar 29 14:06:48 2016 -0400
+
+    modified log file
+
 commit 183c85cddee48f880d6daa8b22787c22c991f004
 Author: John Zukowski <johnzukowski@outlook.com>
 Date:   Tue Mar 29 13:55:50 2016 -0400
