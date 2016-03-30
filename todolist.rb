@@ -1,16 +1,22 @@
 class TodoList
   # GETTERS for title and items
-  attr_reader :title, :items
+  attr_reader :title, :items, :author
     
   # Constructor method
-  def initialize(title)
+  def initialize(title, author)
     @title = title.upcase
     @items = []
+    @author = author.upcase
   end
   
   # Rename list
   def new_title(new_title)
     @title = new_title.upcase
+  end
+  
+   # Rename author
+  def new_author(new_author)
+    @author = new_author.upcase
   end
   
   # Add new item and rank to list
@@ -20,12 +26,14 @@ class TodoList
   end
   
   # Remove item from list
-  def remove_item(index)
+  def remove_item(num)
+    index = num - 1
     @items.delete_at(index)
   end
   
   # Change completion
-  def change_completion(index)
+  def change_completion(num)
+    index = num - 1
     @items.at(index).toggle_completion
   end
   
@@ -43,13 +51,6 @@ class TodoList
   # Print readability divider
   def divider
     puts ("  " + ("=" * 42))
-  end
-  
-  # Print created by
-  def author
-    first_name = "john"
-    last_name = "zukowski"
-    author = "  Author: #{first_name.capitalize} #{last_name.capitalize}"
   end
   
   # Print "To do List" in ascii art
@@ -75,7 +76,7 @@ class TodoList
     divider
     puts "#{@title}".center(42)
     puts "#{weekday}".center(42)
-    puts "#{author}".center(42)
+    puts "Author: #{@author}".center(42)
     puts "Total items shown (#{count_items})".center(42)
     divider
     puts ""
@@ -108,7 +109,7 @@ class Item
   end
 
   # Check if item is completed
-  def completed?
+  def is_item_completed?
     @completed_status
   end
   
@@ -118,9 +119,9 @@ class Item
   end
   
   def print_item
-    puts "  Description:  #{@description}"
-    puts "  Rank:         #{@rank}"
-    puts "  Completed:    #{@completed_status}"
+    puts "  Description:   #{@description}"
+    puts "  Rank:          #{@rank}"
+    puts "  Completed:     #{is_item_completed?}"
     puts ""
   end
 end

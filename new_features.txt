@@ -2,4 +2,5 @@
 
 Feature #1: <Add Rank feature: High importance or Low importance>
 Feature #2: <Print list weekday>
-Feature #3: <Print list author>
+Feature #3: <Print author and change dynamically>
+Feature #4: <Allow user to input list item number to delete, allowing application to adjust to the index value>
